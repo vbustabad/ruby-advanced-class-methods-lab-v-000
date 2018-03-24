@@ -52,8 +52,15 @@ class Song
     song
   end
 
-  def self.create_from_filename(mp3)
+  def self.create_from_filename(filename)
+    component = filename.split(" - ")
+    song_name = component[1].gsub(/.mp3/, '')
+    artist_name = component[0]
 
+    song = self.create
+    song.name = song_name
+    song.artist_name = artist_name
+    song
   end
 
   def self.destroy_all
